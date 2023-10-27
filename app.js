@@ -1,15 +1,16 @@
 const domLibrary = document.querySelector('.cards');
 const popup = document.querySelector('.popup');
 const showButton = document.querySelector('.addBook');
-const domAuthor = document.querySelector('#author');
+const domAuthor = document.querySelector('#time');
 const domTitle = document.querySelector('#title');
-const domPublished = document.querySelector('#published');
-const domDescription = document.querySelector('#description');
+const domPublished = document.querySelector('#date');
+const domDescription = document.querySelector('#diary');
 
 
 // let newBook;
 
 let library = [];
+generateBook(library);
 
 function Book(author, title, published, description) {
     this.author = author;
@@ -100,18 +101,23 @@ showButton.addEventListener('click', () => {
 //     alert(domAuthor.value);
 // }
 
-// const book1 = createBook('Nick', 'The Cunt', 1980);
-// addBookToLibrary(book1);
 
-// const book2 = createBook('RJ', 'Skibidi', 1950);
-// addBookToLibrary(book2);
+//dummy cards
+function generateBook() {
+const book1 = new Book('5:30', 'The Cunt', 1980, 'Curabitur urna purus, egestas sed sem ut, porta viverra tellus. Integer non quam lacus. Donec eu odio ac neque cursus dapibus. Nulla elementum metus at leo tincidunt, eget viverra arcu dictum. Phasellus in pharetra mauris, eu aliquam nisl. Aenean ornare rhoncus lectus, eget imperdiet dui iaculis sed. Phasellus laoreet vestibulum sem sit amet finibus. Phasellus accumsan, ante eu aliquam bibendum, lectus est varius nisl, non pretium leo justo et risus. Donec ut erat sit amet dui pharetra aliquam et vel nibh. Maecenas nec orci ac ante placerat pharetra. Quisque ac lacinia nisi.');
+addBookToLibrary(book1);
 
-// const book3 = createBook('Lopez', 'Jokeron', 1669);
-// addBookToLibrary(book3);
+const book2 = new Book('8:39', 'Skibidi', 1950, 'Maecenas vitae pulvinar quam, hendrerit cursus dolor. Morbi id interdum metus, non malesuada odio. Nunc nibh quam, viverra id enim ut, facilisis tempor tortor. Nullam pulvinar quam in luctus imperdiet. Aliquam ac sem et dui viverra feugiat. Integer pellentesque lacus est, sed luctus diam bibendum at. Suspendisse commodo massa nec lorem pellentesque luctus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus molestie massa sed ultrices bibendum. Suspendisse justo nibh, finibus eget quam non, congue auctor nunc. Sed sed fermentum ex, eu varius ligula. Curabitur et mauris vehicula, mollis odio sit amet, imperdiet magna. Maecenas sed maximus enim.');
+addBookToLibrary(book2);
 
-// const book4 = createBook('Zoid', 'Jokeron 2', 1420);
-// addBookToLibrary(book4);
+const book3 = new Book('7:89', 'Jokeron', 1669, 'Etiam pulvinar auctor eros, sed mollis mauris varius ut. Sed sollicitudin elit ut massa dignissim, sit amet rutrum neque ullamcorper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque quis mauris sed ex congue commodo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis a diam lorem. Aenean at suscipit augue. Mauris nec lorem quis justo varius sagittis. Phasellus consectetur lobortis vestibulum. Vivamus rhoncus, enim id ultrices finibus, enim arcu consectetur lacus, sed ultrices felis mauris sed lacus. Maecenas cursus in tellus et posuere.');
+addBookToLibrary(book3);
 
-// renderBook(library);
+const book4 = new Book('9:26', 'Jokeron 2', 1420, 'Cras turpis nunc, elementum id arcu eget, dapibus aliquam magna. Nullam aliquet sed purus ut facilisis. Aliquam tempor ultricies lectus feugiat elementum. Etiam pellentesque ipsum condimentum finibus elementum. Mauris volutpat porttitor velit, in facilisis purus aliquam et. Pellentesque lacinia molestie odio in volutpat. Donec massa eros, lacinia vel ante sed, auctor congue felis. Morbi tincidunt, elit eget venenatis interdum, odio ligula pharetra justo, vitae maximus purus nunc sit amet sapien. Phasellus sed consequat mi. Integer justo erat, lacinia non consequat ut, congue et nulla. Vivamus dapibus varius mi non varius. Suspendisse non enim nulla. Sed a vulputate dolor. Cras euismod a sem vel consequat. Pellentesque vitae magna ultricies, molestie ex non, volutpat libero. Aliquam erat volutpat.');
+addBookToLibrary(book4);
+
+renderBook(library);
+console.log(library);
+}
 
 // console.log(library);
