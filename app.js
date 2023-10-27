@@ -9,7 +9,7 @@ const domDescription = document.querySelector('#description');
 
 // let newBook;
 
-const library = [];
+let library = [];
 
 function Book(author, title, published, description) {
     this.author = author;
@@ -30,6 +30,10 @@ function addBookToLibrary(book) {
     library.push(book);
 }
 
+function updateLibrary(newlibrary) {
+	library = newlibrary;
+}
+
 function renderBook(library) {
     let prev = domLibrary.querySelectorAll("div");
     prev.forEach((div) => div.remove());
@@ -47,8 +51,20 @@ function renderBook(library) {
         // deleteButton.innerText("X");
         deleteButton.textContent = "delete";
         deleteButton.className = "deleteButton";
+        deleteButton.id = i;
+        library[i].id = i;
+        
+        //console.log(library[1].id);
+        
         deleteButton.addEventListener('click', () => {
-            alert(card.id);
+            //book.removeChild(card);
+            //alert(deleteButton.id);
+            library = library.filter((book) => book.id != deleteButton.id);
+            updateLibrary(library);
+            renderBook(library);
+            //console.log(library);
+            //console.log(deleteButton.id);
+            //console.log(library[deleteButton.id].id);
         });
         card.appendChild(deleteButton);
         //title
