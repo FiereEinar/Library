@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200&family=Roboto:wght@100&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Noto Sans", sans-serif;
 }
 
 .container {
-    border: 1px solid black;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -15,30 +17,196 @@
 }
 
 .container > h1 {
-    border: 1px solid black;
     margin-top: 5rem;
 }
 
 .container > .cards {
-    border: 1px solid black;
     height: 100%;
-    width: 100%;
+    width: 60%;
     display: grid;
-    gap: 2rem;
-    padding: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    /* gap: 2rem;
+    padding: 2rem; */
 }
 
-.bookCard {
-    height: 20rem;
+.cardContainer {
+    /* width: 100%;
+    height: 100%; */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    padding-top: 2rem;
-    border: 1px solid blue;
+    padding: 1rem;
 }
 
 .bookCard > h2  {
     font-size: 1rem;
+}
+
+.card {
+    /* margin: 1rem; */
+    border-radius: 5px;
+    /* max-height: 300px; */
+    width: 100%;
+    text-wrap: wrap;
+    height: minmax(50%, 90%);
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    font-weight: 600;
+    box-shadow: 0 1px 6px rgb(0, 0, 0, 0.8);
+    transition: all 0.2s ease;
+    /* overflow: ; */
+    scrollbar-gutter: 5px;
+}
+
+.deleteButton {
+    border: 1px solid black;
+    width: 6rem;
+    height: 2rem;
+    align-self: flex-end;
+    border-radius: 5px;
+    font-weight: 900;
+    color: #ff0000;
+    transition: all 0.2s ease;
+}
+
+.deleteButton:hover {
+    background-color: #06c9ff;
+    color: #000000;
+    border: none;
+    box-shadow: 0 1px 6px rgb(0, 0, 0, 0.8);
+}
+
+.card > h2 {
+    /* border: 1px solid black; */
+}
+
+.card > h2 + p {
+    font-size: 0.8rem;
+    /* border: 1px solid black; */
+}
+
+.card > h2 + p + h3 + p {
+    padding-top: 10px;
+    text-wrap: wrap;
+}
+
+.card:hover {
+    transform: scale(1.025);
+}
+
+nav {
+    display: flex;
+    height: 5rem;
+    box-shadow: 0 1px 6px rgb(0, 0, 0, 0.8);
+}
+
+nav > * {
+    flex: 1;
+}
+
+.logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 2rem;
+}
+
+.logo > img {
+    width: 4rem;
+    height: 4rem;
+}
+
+.logo > h1 span {
+    color: #06c9ff;
+}
+
+nav > .logo + div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.logo + div > button > img {
+    width: 2rem;
+    height: 60%;
+}
+
+.logo + div > button {
+    height: 60%;
+    display: flex;
+    min-width: 8rem;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border-radius: 5px;
+    font-weight: 800;
+    transition: all 0.2s ease;
+    margin-right: 2rem;
+    cursor: pointer;
+}
+
+.logo + div > button:hover {
+    background-color: #06c9ff;
+    box-shadow: 0 1px 6px rgb(0, 0, 0, 0.8);
+    border: none;
+}
+.logo + div > button:active {
+    opacity: 0.8;
+}
+
+    /* popup */
+
+dialog {
+    width: 100%;
+    height: 100%;
+    /* opacity: 0.8; */
+    /* display: grid;
+    place-items: center; */
+    border: none;
+}
+
+dialog > form {
+    margin: 8rem auto;
+    width: 20rem;
+    height: 25rem;
+    font-weight: 800;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: #b9dfff;
+    border-radius: 8px;
+    box-shadow: 0 5px 12px rgb(0, 0, 0, 0.8);
+}
+
+dialog > form > .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+dialog > form > .inputs > input {
+    border-radius: 5px;
+    font-weight: 800;
+    padding-left: 5px;
+}
+
+dialog > form > .buttons {
+    display: flex;
+    justify-content: space-around;
+}
+dialog > form > .buttons > button {
+    width: 5rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+dialog > form > .buttons > button:hover {
+    background-color: #06c9ff;
+    box-shadow: 0 1px 6px rgb(0, 0, 0, 0.8);
+    border: none;
 }
