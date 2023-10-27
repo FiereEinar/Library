@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
+    <title>Diary</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,33 +14,33 @@
     <nav>
         <div class="logo">
             <img src="icons/library.svg" alt="">
-            <h1><span>My</span>Library</h1>
+            <h1><span>My</span>Diary</h1>
         </div>
         <div>
             <button class="addBook">
                 <img src="icons/book-plus-multiple.svg" alt="add">
-                <p>Add Book</p>
+                <p>Add Diary</p>
             </button>
         </div>
     </nav>
 
     <dialog class="popup">
         <form>
-            <div class="inputs">
-                <label for="author">Author</label>
-                <input type="text" id="author" name="author">
-            </div>
-            <div class="inputs">
+        		<div class="inputs">
                 <label for="title">Title</label>
                 <input type="text" id="title" name="title">
             </div>
             <div class="inputs">
-                <label for="published">Published</label>
-                <input type="text" id="published" name="published">
+                <label for="diary">Diary</label>
+                <input type="text" id="diary" name="diary">
             </div>
             <div class="inputs">
-                <label for="description">Description</label>
-                <input type="text" id="description" name="description">
+                <label for="time">Time</label>
+                <input type="time" id="time" name="time">
+            </div>
+            <div class="inputs">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date">
             </div>
             <div class="buttons">
                 <button formmethod="dialog">Close</button>
@@ -50,7 +50,7 @@
     </dialog>
 
     <div class="container">
-        <h1>My Library</h1>
+        <h1>My Diaries</h1>
         <div class="cards">
 
         </div>
