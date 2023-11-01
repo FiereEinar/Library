@@ -214,3 +214,29 @@ dialog > form > .buttons > button:hover {
     box-shadow: 0 1px 6px rgb(0, 0, 0, 0.8);
     border: none;
 }
+
+.notFavorite, .favorite {
+	background-color: lightgray;
+	border: 1px solid black;
+	border-radius: 3px;
+	font-weight: 800;
+	padding: 3px;
+	width: 5rem;
+	align-self: flex-end;
+	margin: 8px 0;
+	transition: all 0.2s ease;
+}
+
+.favorite {
+	background-color: yellow;
+}
+
+.notFavorite:hover {
+	background-color: yellow;
+	border: none;
+    box-shadow: 0 1px 6px rgb(0, 0, 0, 0.8);
+}
+
+.notFavorite:active {
+	opacity: 0.8;
+}

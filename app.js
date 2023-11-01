@@ -6,21 +6,19 @@ const domTitle = document.querySelector('#title');
 const domPublished = document.querySelector('#date');
 const domDescription = document.querySelector('#diary');
 
-
-// let newBook;
-
 let library = [];
 
+class Book {
+	constructor (author, title, published, description) {
+	    this.author = author;
+	    this.title = title;
+	    this.published = published;
+	    this.description = description;
+	    this.favorite = false;
+	}
+}
 //dummy books/diaries for testing purposes
 generateBook(library);
-
-function Book(author, title, published, description) {
-    this.author = author;
-    this.title = title;
-    this.published = published;
-    this.description = description;
-    this.read = false;
-}
 
 function createBook() {
     const newBook = new Book(domAuthor.value, domTitle.value, domPublished.value, domDescription.value);
@@ -28,15 +26,12 @@ function createBook() {
     renderBook(library);
     console.log(library);
 }
-
 function addBookToLibrary(book) {
     library.push(book);
 }
-
 function updateLibrary(newlibrary) {
 	library = newlibrary;
 }
-
 function renderBook(library) {
     let prev = domLibrary.querySelectorAll("div");
     prev.forEach((div) => div.remove());
@@ -86,7 +81,25 @@ function renderBook(library) {
         const description = document.createElement("p");
         description.innerText = library[i].description;
         card.appendChild(description);
+        
+        makeFavorite(i, card);
     }
+}
+function makeFavorite(index, card) {
+	const favorite = document.createElement("button");
+	favorite.textContent = 'favorite'
+	if (library[index].favorite) {
+		favorite.className = 'favorite';
+	} else {
+		favorite.className = 'notFavorite';
+	}
+	favorite.addEventListener('click', () => {
+		library[index].favorite = !library[index].favorite;
+		let prev = card.querySelector('.notFavorite, .favorite')
+		prev.remove();
+		makeFavorite(index, card);
+	})
+	card.appendChild(favorite);
 }
 
 // const deleteButton = document.querySelector('.deleteButton');
