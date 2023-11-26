@@ -8,10 +8,20 @@ const domDescription = document.querySelector('#diary');
 
 let library = [];
 
+class Book {
+	constructor (author, title, published, description) {
+	    this.author = author;
+	    this.title = title;
+	    this.published = published;
+	    this.description = description;
+	    this.favorite = false;
+	}
+}
 //dummy books/diaries for testing purposes
 // generateBook(library);
 
 init();
+
 
 function Book(author, title, published, description) {
     this.author = author;
@@ -26,6 +36,8 @@ function init() {
 	renderBook();
 }
 
+
+
 function createBook() {
     const newBook = new Book(domAuthor.value, domTitle.value, domPublished.value, domDescription.value);
     console.log(newBook);
@@ -34,6 +46,7 @@ function createBook() {
     renderBook(library);
     console.log(library);
 }
+
 
 function getLibraryFromLocal() {
 	let parsedLibrary = JSON.parse(localStorage.getItem('localLibrary'));
@@ -46,17 +59,24 @@ function getLibraryFromLocal() {
 
 function addBookToLibrary(newBook) {
 	library.push(newBook)
-}
 
+
+
+
+}
 function updateLibrary(newlibrary) {
 	library = newlibrary;
 }
+
 
 function addLibraryToLocal() {
 	localStorage.setItem('localLibrary', JSON.stringify(library));
 }
 
 function renderBook() {
+
+
+
     let prev = domLibrary.querySelectorAll("div");
     prev.forEach((div) => div.remove());
     
@@ -100,7 +120,25 @@ function renderBook() {
         const description = document.createElement("p");
         description.innerText = library[i].description;
         card.appendChild(description);
+        
+        makeFavorite(i, card);
     }
+}
+function makeFavorite(index, card) {
+	const favorite = document.createElement("button");
+	favorite.textContent = 'favorite'
+	if (library[index].favorite) {
+		favorite.className = 'favorite';
+	} else {
+		favorite.className = 'notFavorite';
+	}
+	favorite.addEventListener('click', () => {
+		library[index].favorite = !library[index].favorite;
+		let prev = card.querySelector('.notFavorite, .favorite')
+		prev.remove();
+		makeFavorite(index, card);
+	})
+	card.appendChild(favorite);
 }
 
 showButton.addEventListener('click', () => {
