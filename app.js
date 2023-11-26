@@ -29,11 +29,9 @@ function init() {
 
 function createBook() {
     const newBook = new Book(domAuthor.value, domTitle.value, domPublished.value, domDescription.value);
-    console.log(newBook);
     addBookToLibrary(newBook);
     addLibraryToLocal();
     renderBook(library);
-    console.log(library);
 }
 
 function getLibraryFromLocal() {
@@ -47,9 +45,6 @@ function getLibraryFromLocal() {
 
 function addBookToLibrary(newBook) {
 	library.push(newBook)
-}
-function updateLibrary(newlibrary) {
-	library = newlibrary;
 }
 
 function addLibraryToLocal() {
@@ -81,7 +76,7 @@ function renderBook() {
         
         deleteButton.addEventListener('click', () => {
             library = library.filter((book) => book.id != deleteButton.id);
-            updateLibrary(library);
+            addLibraryToLocal();
             renderBook(library);
         });
         card.appendChild(deleteButton);
@@ -117,8 +112,9 @@ function makeFavorite(index, card) {
 		library[index].favorite = !library[index].favorite;
 		let prev = card.querySelector('.notFavorite, .favorite')
 		prev.remove();
+		addLibraryToLocal();
 		makeFavorite(index, card);
-	})
+	});
 	card.appendChild(favorite);
 }
 
