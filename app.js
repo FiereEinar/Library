@@ -22,21 +22,10 @@ class Book {
 
 init();
 
-
-function Book(author, title, published, description) {
-    this.author = author;
-    this.title = title;
-    this.published = published;
-    this.description = description;
-    this.read = false;
-}
-
 function init() {
 	getLibraryFromLocal();
 	renderBook();
 }
-
-
 
 function createBook() {
     const newBook = new Book(domAuthor.value, domTitle.value, domPublished.value, domDescription.value);
@@ -46,7 +35,6 @@ function createBook() {
     renderBook(library);
     console.log(library);
 }
-
 
 function getLibraryFromLocal() {
 	let parsedLibrary = JSON.parse(localStorage.getItem('localLibrary'));
@@ -59,23 +47,16 @@ function getLibraryFromLocal() {
 
 function addBookToLibrary(newBook) {
 	library.push(newBook)
-
-
-
-
 }
 function updateLibrary(newlibrary) {
 	library = newlibrary;
 }
-
 
 function addLibraryToLocal() {
 	localStorage.setItem('localLibrary', JSON.stringify(library));
 }
 
 function renderBook() {
-
-
 
     let prev = domLibrary.querySelectorAll("div");
     prev.forEach((div) => div.remove());
