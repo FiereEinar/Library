@@ -18,23 +18,70 @@ class Book {
 	}
 }
 //dummy books/diaries for testing purposes
-generateBook(library);
+// generateBook(library);
+
+init();
+
+
+function Book(author, title, published, description) {
+    this.author = author;
+    this.title = title;
+    this.published = published;
+    this.description = description;
+    this.read = false;
+}
+
+function init() {
+	getLibraryFromLocal();
+	renderBook();
+}
+
+
 
 function createBook() {
     const newBook = new Book(domAuthor.value, domTitle.value, domPublished.value, domDescription.value);
+    console.log(newBook);
     addBookToLibrary(newBook);
+    addLibraryToLocal();
     renderBook(library);
     console.log(library);
 }
-function addBookToLibrary(book) {
-    library.push(book);
+
+
+function getLibraryFromLocal() {
+	let parsedLibrary = JSON.parse(localStorage.getItem('localLibrary'));
+	if (parsedLibrary == null) {
+		addLibraryToLocal();
+	} else {
+		library = parsedLibrary;
+	}
+}
+
+function addBookToLibrary(newBook) {
+	library.push(newBook)
+
+
+
+
 }
 function updateLibrary(newlibrary) {
 	library = newlibrary;
 }
-function renderBook(library) {
+
+
+function addLibraryToLocal() {
+	localStorage.setItem('localLibrary', JSON.stringify(library));
+}
+
+function renderBook() {
+
+
+
     let prev = domLibrary.querySelectorAll("div");
     prev.forEach((div) => div.remove());
+    
+    if (library == null) return;
+    
     for (let i = 0; i <= library.length - 1; i++) {
         const book = document.createElement("div");
         book.classList.add('cardContainer');
@@ -46,23 +93,15 @@ function renderBook(library) {
         book.appendChild(card);
         //delete button
         const deleteButton = document.createElement("button");
-        // deleteButton.innerText("X");
         deleteButton.textContent = "delete";
         deleteButton.className = "deleteButton";
         deleteButton.id = i;
         library[i].id = i;
         
-        //console.log(library[1].id);
-        
         deleteButton.addEventListener('click', () => {
-            //book.removeChild(card);
-            //alert(deleteButton.id);
             library = library.filter((book) => book.id != deleteButton.id);
             updateLibrary(library);
             renderBook(library);
-            //console.log(library);
-            //console.log(deleteButton.id);
-            //console.log(library[deleteButton.id].id);
         });
         card.appendChild(deleteButton);
         //title
@@ -102,20 +141,9 @@ function makeFavorite(index, card) {
 	card.appendChild(favorite);
 }
 
-// const deleteButton = document.querySelector('.deleteButton');
-
 showButton.addEventListener('click', () => {
     popup.show();
 });
-
-// deleteButton.addEventListener('click', () => {
-//     alert("deleted");
-// });
-
-// function test() {
-//     alert(domAuthor.value);
-// }
-
 
 //dummy cards
 function generateBook() {
@@ -134,5 +162,3 @@ function generateBook() {
     renderBook(library);
     console.log(library);
 }
-
-// console.log(library);
