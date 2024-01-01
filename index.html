@@ -25,26 +25,26 @@
     </nav>
 
     <dialog class="popup">
-        <form>
-        		<div class="inputs">
+        <form id="form">
+        	<div class="inputs">
                 <label for="title">Title</label>
-                <input type="text" id="title" name="title">
+                <input placeholder="Title" type="text" id="title" name="title" minlength="3" required>
             </div>
             <div class="inputs">
-                <label for="diary">Diary</label>
-                <input type="text" id="diary" name="diary">
+                <label for="diary">Description</label>
+                <input placeholder="Description" type="text" id="diary" name="diary" minlength="3" required>
             </div>
             <div class="inputs">
                 <label for="time">Time</label>
-                <input type="time" id="time" name="time">
+                <input onblur="(this.type='text')" onfocus="(this.type='time')" placeholder="00:00 xx" type="text" id="time" name="time" required>
             </div>
             <div class="inputs">
                 <label for="date">Date</label>
-                <input type="date" id="date" name="date">
+                <input onblur="(this.type='text')" onfocus="(this.type='date')" placeholder="MM/DD/YYYY" type="text" id="date" name="date" required>
             </div>
             <div class="buttons">
-                <button formmethod="dialog">Close</button>
-                <button formmethod="dialog" onclick="createBook()">Submit</button>
+                <button formmethod="dialog" class="closeButton">Close</button>
+                <button formmethod="dialog" class="submitButton" type="submit">Submit</button>
             </div>
         </form>
     </dialog>
