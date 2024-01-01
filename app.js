@@ -1,12 +1,37 @@
 const domLibrary = document.querySelector('.cards');
 const popup = document.querySelector('.popup');
 const showButton = document.querySelector('.addBook');
+const closeButton = document.querySelector('.closeButton');
+const submitButton = document.querySelector('.submitButton');
+const form = document.querySelector('#form');
 const domAuthor = document.querySelector('#time');
 const domTitle = document.querySelector('#title');
 const domPublished = document.querySelector('#date');
 const domDescription = document.querySelector('#diary');
 
 let library = [];
+
+showButton.addEventListener('click', () => {
+    popup.show();
+});
+
+closeButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    clearDialog();
+    popup.close();
+});
+
+form.addEventListener('submit', () => {
+    createBook();
+    clearDialog();
+});
+
+function clearDialog() {
+    domAuthor.value = '';
+    domTitle.value = '';
+    domPublished.value = '';
+    domDescription.value = '';
+}
 
 class Book {
 	constructor (author, title, published, description) {
@@ -118,9 +143,6 @@ function makeFavorite(index, card) {
 	card.appendChild(favorite);
 }
 
-showButton.addEventListener('click', () => {
-    popup.show();
-});
 
 //dummy cards
 function generateBook() {
